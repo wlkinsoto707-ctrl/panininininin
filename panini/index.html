@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Panini Mundial 2026™ - Tienda Oficial</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Álbum y figuritas del Mundial FIFA 2026™ - Panini Colombia">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="imagenes/favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ========== HEADER SUPERIOR ROJO ========== */
+        .top-bar {
+            background: #E31837;
+            text-align: center;
+            padding: 12px;
+            font-size: 13px;
+            font-weight: 500;
+            color: white;
+        }
+
+        /* ========== HEADER PRINCIPAL AZUL ========== */
+        .blue-header {
+            background: #0033A0;
+            padding: 15px 0;
+        }
+
+        .blue-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .search-text {
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .login-btn {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            background: white;
+            color: #0033A0;
+        }
+
+        /* ========== MENÚ NAVEGACIÓN ========== */
+        .nav-menu {
+            background: #0033A0;
+            padding: 10px 0;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-menu .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: flex-start;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== SECCIÓN HERO ========== */
+        .hero-stickers {
+            text-align: center;
+            padding: 50px 20px;
+            background: #f8f9fa;
+            margin: 30px 0;
+            border-radius: 16px;
+        }
+
+        .hero-stickers h3 {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #E31837;
+            margin-bottom: 15px;
+        }
+
+        .hero-stickers h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .hero-stickers .panini-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0033A0;
+            margin: 20px 0 10px;
+        }
+
+        .hero-stickers .url-text {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .hero-stickers .display-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        /* ========== BANNER JUGADORES ========== */
+        .players-banner {
+            width: 100%;
+            margin: 30px 0;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .players-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========== FILTROS ========== */
+        .filters-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .filter-link {
+            color: #0033A0;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .product-count {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .order-select {
+            font-size: 14px;
+            color: #333;
+            background: transparent;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* ========== BREADCRUMB ========== */
+        .breadcrumb {
+            padding: 15px 0;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: #0033A0;
+        }
+
+        /* ========== PRODUCTOS ========== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .product-card {
+            background: #FFFFFF;
+            border: 1px solid #eee;
+            border-radius: 16px;
+            padding: 20px;
+            transition: box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #f8f8f8;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .product-worldcup {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .price-container {
+            margin: 15px 0;
+        }
+
+        .old-price {
+            font-size: 16px;
+            color: #999;
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+
+        .current-price {
+            font-size: 24px;
+            font-weight: 800;
+            color: #E31837;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background: #E31837;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 10px;
+        }
+
+        .btn-comprar {
+            background: #0033A0;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-comprar:hover {
+            background: #002280;
+        }
+
+        /* ========== PREGUNTAS ========== */
+        .preguntas-section {
+            padding: 50px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .preguntas-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+
+        .contacto-info {
+            background: #f8f9fa;
+            padding: 25px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+        }
+
+        .contacto-info p {
+            margin: 8px 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 30px 0 20px;
+            color: #1a1a1a;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+            color: #1a1a1a;
+            padding: 15px 0;
+            font-size: 15px;
+        }
+
+        .faq-question:hover {
+            color: #0033A0;
+        }
+
+        .faq-plus {
+            font-size: 20px;
+            font-weight: 400;
+            color: #0033A0;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 0 20px 0;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ========== NOTICIAS ========== */
+        .noticias-section {
+            padding: 50px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .noticias-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .noticia-card {
+            background: #f8f9fa;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+        }
+
+        .noticia-card p {
+            font-size: 14px;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 40px;
+            padding: 50px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-column h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #666;
+            text-decoration: none;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .footer-column a:hover {
+            color: #0033A0;
+        }
+
+        .footer-bottom {
+            padding: 30px 0;
+            border-top: 1px solid #eee;
+            text-align: center;
+            font-size: 11px;
+            color: #999;
+            line-height: 1.8;
+        }
+
+        .powered {
+            margin-top: 15px;
+            font-size: 10px;
+            color: #bbb;
+        }
+
+        @media (max-width: 768px) {
+            .hero-stickers h1 {
+                font-size: 28px;
+            }
+            .blue-header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav-menu .container {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- BARRA SUPERIOR ROJA -->
+<div class="top-bar">
+    Pagos 100% seguros: débito, crédito y PSE
+</div>
+
+<!-- HEADER AZUL -->
+<div class="blue-header">
+    <div class="container">
+        <a href="#" class="logo">
+            <img src="imagenes/panini-logo.png" alt="Panini" onerror="this.src='https://placehold.co/200x50/white/0033A0?text=PANINI'">
+        </a>
+        <div class="search-text">¿Buscas un manga, álbum o cómic?</div>
+        <button class="login-btn">Inicia sesión</button>
+    </div>
+</div>
+
+<!-- MENÚ NAVEGACIÓN -->
+<div class="nav-menu">
+    <div class="container">
+        <a href="#">Lo nuevo</a>
+        <a href="#">Mundial</a>
+        <a href="#">Álbumes</a>
+        <a href="#">Cómics</a>
+        <a href="#">Mangas</a>
+        <a href="#">Trading Cards</a>
+        <a href="#">Completar mis Álbumes</a>
+        <a href="#">Noticias</a>
+        <a href="#">Sobre Panini</a>
+    </div>
+</div>
+
+<div class="container">
+    <!-- SECCIÓN 7 STICKERS -->
+    <div class="hero-stickers">
+        <h3>7 STICKERS POR SOBRE</h3>
+        <h1>FIFA WORLD CUP 2026</h1>
+        <div class="panini-text">PANINI</div>
+        <div class="url-text">paninitienda.com</div>
+        <div class="display-text">DE NUEVO DISPONIBLE DISPLAY COPA MUNDIAL DE LA FIFA 26™</div>
+    </div>
+
+    <!-- BANNER JUGADORES -->
+    <div class="players-banner">
+        <img src="imagenes/banner-jugadores.jpg" alt="Jugadores Mundial 2026" onerror="this.src='https://placehold.co/1200x300/0033A0/white?text=Banner+Jugadores+Mundial+2026'">
+    </div>
+
+    <!-- FILTROS -->
+    <div class="filters-bar">
+        <div class="filters-left">
+            <a href="#" class="filter-link">Mostrar filtros</a>
+            <span class="product-count">2 productos</span>
+        </div>
+        <div>
+            <select class="order-select">
+                <option>Ordenar por Más vendidos ▼</option>
+                <option>Ordenar por Precio menor</option>
+                <option>Ordenar por Precio mayor</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+        <a href="#">Inicio</a> / <span>Panini Mundial 2026™ en Colombia: álbumes, sobres y colección oficial</span>
+    </div>
+
+    <!-- PRODUCTOS CON 40% DE DESCUENTO -->
+    <div class="products-grid">
+        <!-- Producto 1: Álbum Pasta Dura -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="imagenes/album-pasta-dura.jpg" alt="Álbum Pasta Dura" onerror="this.src='https://placehold.co/300x300/f8f8f8/0033A0?text=Álbum'">
+            </div>
+            <div class="product-title">Álbum Pasta Dura</div>
+            <div class="product-worldcup">COPA MUNDIAL DE LA FIFA 2026™</div>
+            <div class="price-container">
+                <span class="old-price">$49.900</span>
+                <span class="current-price">$29.940</span>
+                <span class="discount-badge">-40%</span>
+            </div>
+            <button class="btn-comprar" onclick="window.location.href='recargas/'">Comprar</button>
+        </div>
+
+        <!-- Producto 2: Display x 104 sobres -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="imagenes/display-sobres.jpg" alt="Display x 104 sobres" onerror="this.src='https://placehold.co/300x300/f8f8f8/0033A0?text=Display'">
+            </div>
+            <div class="product-title">Display x 104 sobres</div>
+            <div class="product-worldcup">COPA MUNDIAL DE LA FIFA 2026™</div>
+            <div class="price-container">
+                <span class="old-price">$520.000</span>
+                <span class="current-price">$312.000</span>
+                <span class="discount-badge">-40%</span>
+            </div>
+            <button class="btn-comprar" onclick="window.location.href='recargas/'">Comprar</button>
+        </div>
+    </div>
+
+    <!-- ¿TIENES PREGUNTAS? -->
+    <div class="preguntas-section">
+        <h2 class="preguntas-title">¿TIENES PREGUNTAS?</h2>
+        <div class="contacto-info">
+            <p>En caso de dudas o inconvenientes durante el proceso de compra, el cliente puede comunicarse a través de los siguientes canales de atención:</p>
+            <p><strong>Línea Nacional:</strong> 1800 0415385, (605) 309 3043, (601) 486 5050</p>
+            <p><strong>Correo electrónico:</strong> sac@continente.com.co</p>
+        </div>
+
+        <h3 class="section-subtitle">ENVÍO Y DESPACHOS</h3>
+        
+        <div class="faq-item">
+            <div class="faq-question">¿Cuándo inicia y cuándo termina la preventa?<span class="faq-plus">+</span></div>
+            <div class="faq-answer">La preventa inicia el 29 de abril y finaliza el 30 de mayo del 2026.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Qué significa que este producto está en preventa?<span class="faq-plus">+</span></div>
+            <div class="faq-answer">Significa que puedes asegurar tu producto antes del lanzamiento oficial.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Cuándo se realizarán los despachos de los productos en preventa?<span class="faq-plus">+</span></div>
+            <div class="faq-answer">Los despachos se realizarán a partir del 15 de junio de 2026.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Puedo comprar durante la preventa y recibir mi pedido antes de las fechas indicadas?<span class="faq-plus">+</span></div>
+            <div class="faq-answer">No, las fechas de despacho son las indicadas.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Cuales son los horarios de atención?<span class="faq-plus">+</span></div>
+            <div class="faq-answer">Lunes a viernes de 8:00 a.m. a 6:00 p.m.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Qué pasa si compro varios productos con fechas de despacho diferentes?<span class="faq-plus">+</span></div>
+            <div class="faq-answer">Se despacharán según la fecha más tardía de los productos.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿La fecha de despacho es la misma que la fecha de entrega?<span class="faq-plus">+</span></div>
+            <div class="faq-answer">No, la fecha de despacho es cuando sale el producto, la entrega depende del transportador.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Cómo sabré cuándo mi pedido fue despachado?<span class="faq-plus">+</span></div>
+            <div class="faq-answer">Recibirás un correo con el código de seguimiento.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Puedo hacer pedidos durante todo el periodo de preventa?<span class="faq-plus">+</span></div>
+            <div class="faq-answer">Sí, durante todo el periodo de preventa activo.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Qué pasa si hago mi pedido el último día de preventa?<span class="faq-plus">+</span></div>
+            <div class="faq-answer">Tu pedido se procesará igual pero podría tener demoras en despacho.</div>
+        </div>
+    </div>
+
+    <!-- NOTICIAS -->
+    <div class="noticias-section">
+        <h2 class="noticias-title">TODO SOBRE EL ÁLBUM MUNDIAL FIFA 2026™</h2>
+        <div class="noticia-card">
+            <h3 style="font-weight: 700;">PANINI WEEKEND COLOMBIA: OBTÉN TU ÁLBUM DE OBSEQUIO EL 2 Y 3 DE MAYO</h3>
+            <p>Consulta las fechas, ciudades y centros comerciales del Panini Weekend Colombia donde podrás reclamar tu álbum pasta blanda de la Copa Mundial de la FIFA 2026™ y comenzar tu colección desde el primer día.</p>
+        </div>
+        <div class="noticia-card">
+            <h3 style="font-weight: 700;">PANINI NOMINADO A LOS PREMIOS INDIA CATALINA 2026</h3>
+            <p>Por su trayectoria y contribución al mundo del coleccionismo.</p>
+        </div>
+    </div>
+
+    <!-- FOOTER COLECCIONABLES, MANGA, CÓMICS, AYUDA -->
+    <div class="footer-links-grid">
+        <div class="footer-column">
+            <h4>COLECCIONABLES</h4>
+            <a href="#">Álbum Yu-Gi-Oh</a>
+            <a href="#">Álbum Naruto Classic</a>
+            <a href="#">Álbum One Piece Road To Egghead</a>
+        </div>
+        <div class="footer-column">
+            <h4>MANGA</h4>
+            <a href="#">Lanzamientos noviembre 11</a>
+            <a href="#">Reimpresiones Manga</a>
+            <a href="#">Manga Jujutsu Kaisen</a>
+        </div>
+        <div class="footer-column">
+            <h4>CÓMICS</h4>
+            <a href="#">Deadpool X Batman</a>
+            <a href="#">Lanzamientos noviembre 11</a>
+            <a href="#">Cómicas Marvel</a>
+            <a href="#">Cómicas DC</a>
+        </div>
+        <div class="footer-column">
+            <h4>AYUDA</h4>
+            <a href="#">Síguenos</a>
+            <a href="#">Nosotros</a>
+            <a href="#">Contáctanos</a>
+            <a href="#">PQR</a>
+            <a href="#">Preguntas Frecuentes</a>
+        </div>
+    </div>
+
+    <!-- FOOTER ENLACES LEGALES -->
+    <div class="footer-links-grid" style="padding-top: 0;">
+        <div class="footer-column">
+            <a href="#">Puntos de venta</a>
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Políticas de Despachos y Devoluciones</a>
+            <a href="#">Políticas de Garantía</a>
+            <a href="#">Política de Reembolso de Dinero</a>
+        </div>
+        <div class="footer-column">
+            <a href="#">Tyc Cupones De Descuento</a>
+            <a href="#">Tyc - Dinámicas 2024</a>
+            <a href="#">Tyc actividad apertura Panini Point</a>
+            <a href="#">Términos y Condiciones Mario Castañeda</a>
+            <a href="#">Tyc Preventa DC Comics</a>
+            <a href="#">Tyc-Dinámicas 2025</a>
+        </div>
+        <div class="footer-column">
+            <a href="#">SIC.GOV.CO</a>
+            <a href="#">Términos Y Condiciones: Medio De Pago Addi</a>
+            <a href="#">Tyc Caja de Navidad</a>
+            <a href="#">Tyc-Dinámicas 2026</a>
+            <a href="#">Tyc Preventa Mundial 2026</a>
+        </div>
+    </div>
+
+    <!-- FOOTER INFERIOR -->
+    <div class="footer-bottom">
+        <p>Propiedad artística © 2025 Panini Colombia.</p>
+        <p>CONTINENTE SAS - CL 69 Via 40 - 301 Barranquilla Colombia</p>
+        <p>NIT: 890101279 Teléfono: Barranquilla (605) 3093043 - 018000415385</p>
+        <div class="powered">Powered by BoteroMedia</div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // Acordeón para preguntas frecuentes
+        $('.faq-question').click(function() {
+            var answer = $(this).next('.faq-answer');
+            var plus = $(this).find('.faq-plus');
+            
+            if (answer.is(':visible')) {
+                answer.slideUp();
+                plus.text('+');
+            } else {
+                answer.slideDown();
+                plus.text('−');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
