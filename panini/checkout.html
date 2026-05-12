@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     
-    <style> 
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -20,6 +20,18 @@
             background: #f5f7fb;
             font-family: 'Inter', sans-serif;
             padding: 40px 20px;
+        }
+
+        /* Header con logo Panini */
+        .checkout-header {
+            max-width: 1280px;
+            margin: 0 auto 30px auto;
+            text-align: center;
+        }
+
+        .checkout-header img {
+            height: 60px;
+            width: auto;
         }
 
         .container {
@@ -178,11 +190,20 @@
             cursor: pointer;
             margin-top: 20px;
             transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .btn-pagar:hover {
             background: #002280;
             transform: scale(0.98);
+        }
+
+        .btn-pagar img {
+            height: 24px;
+            width: auto;
         }
 
         /* MODAL DE CARGA PSE */
@@ -211,7 +232,7 @@
             width: 90%;
         }
 
-        .logo-pse {
+        .logo-pse-modal {
             width: 100px;
             margin-bottom: 20px;
         }
@@ -253,10 +274,18 @@
             .order-summary {
                 position: static;
             }
+            .checkout-header img {
+                height: 45px;
+            }
         }
     </style>
 </head>
 <body>
+
+<!-- HEADER CON LOGO PANINI -->
+<div class="checkout-header">
+    <img src="https://paninitienda.com/cdn/shop/files/panini-logo_2_2_1_png.webp" alt="Panini">
+</div>
 
 <div class="container">
     <div class="checkout-form">
@@ -388,13 +417,13 @@
         </div>
         <div class="summary-total">
             <div class="total-row">
-    <span>Total</span>
-    <span id="cart-total-display">$0</span>
-</div>
+                <span>Total</span>
+                <span id="cart-total-display">$0</span>
+            </div>
         </div>
-        <button class="btn-pagar" id="checkout-pay-btn" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-    <img src="/panini/imagenes/pse-logo.webp" alt="PSE" style="height: 24px; width: auto;"> Pagar ahora
-</button>
+        <button class="btn-pagar" id="checkout-pay-btn">
+            <img src="/panini/imagenes/pse-logo.webp" alt="PSE" onerror="this.style.display='none'"> Pagar ahora
+        </button>
         <div style="font-size: 11px; text-align: center; margin-top: 15px; color: #999;">
             🔐 Todas las transacciones son seguras y están encargadas.
         </div>
@@ -406,7 +435,7 @@
     <div class="modal-carga-contenido">
         <img src="/panini/imagenes/pse-logo.webp" 
              alt="PSE" 
-             class="logo-pse"
+             class="logo-pse-modal"
              onerror="this.src='https://placehold.co/200x80/0033A0/white?text=PSE'">
         <div class="spinner-pse"></div>
         <p>Procesando pago seguro</p>
