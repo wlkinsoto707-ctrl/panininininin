@@ -6,15 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="description" content="Álbum y figuritas del Mundial FIFA 2026™ - Panini Colombia">
     
-    <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="imagenes/favicon.ico">
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     
-    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <style>
@@ -137,7 +134,6 @@
             margin: 0 4px;
         }
 
-        /* === CARRUSEL === */
         .main-banner {
             width: 100%;
             position: relative;
@@ -179,7 +175,6 @@
             background-color: #E31837;
         }
 
-        /* === BOTÓN FLOTANTE DE WHATSAPP === */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -201,7 +196,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* Tooltip del WhatsApp */
         .whatsapp-tooltip {
             position: absolute;
             bottom: 70px;
@@ -249,8 +243,6 @@
             }
         }
 
-        /* === FIN BOTÓN WHATSAPP === */
-
         .breadcrumb {
             padding: 15px 0;
             font-size: 12px;
@@ -295,6 +287,12 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .product-image:hover {
+            transform: scale(1.02);
         }
 
         .product-image img {
@@ -360,7 +358,6 @@
             background: #002280;
         }
 
-        /* CARRITO LATERAL */
         .cart-overlay {
             position: fixed;
             top: 0;
@@ -696,7 +693,7 @@
 
 <div class="blue-header">
     <div class="container">
-        <a href="#" class="logo">
+        <a href="index.html" class="logo">
             <img src="https://paninitienda.com/cdn/shop/files/panini-logo_2_2_1_png.webp" alt="Panini">
         </a>
         <div class="search-text">¿Buscas un manga, álbum o cómic?</div>
@@ -717,7 +714,6 @@
     </div>
 </div>
 
-<!-- CARRUSEL -->
 <div class="main-banner">
     <div class="slideshow-container">
         <div class="slide fade">
@@ -737,7 +733,6 @@
     </div>
 </div>
 
-<!-- BOTÓN FLOTANTE DE WHATSAPP -->
 <div class="whatsapp-float" id="whatsappBtn">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     <div class="whatsapp-tooltip">📱 ¿Necesitas ayuda? ¡Escríbenos!</div>
@@ -745,16 +740,18 @@
 
 <div class="container">
     <div class="breadcrumb">
-        <a href="#">Inicio</a> / <span>Panini Mundial 2026™ en Colombia: álbumes, sobres y colección oficial</span>
+        <a href="index.html">Inicio</a> / <span>Panini Mundial 2026™ en Colombia: álbumes, sobres y colección oficial</span>
     </div>
 
     <div class="products-grid">
-        <!-- Producto 1: Álbum Pasta Dura -->
+        <!-- Producto 1: Álbum Pasta Dura - IMAGEN ES LINK A DETALLE -->
         <div class="product-card" data-id="1" data-name="Álbum Pasta Dura COPA MUNDIAL DE LA FIFA 2026™" data-price="29940" data-brand="PANINI COLOMBIA" data-image="https://paninitienda.com/cdn/shop/files/HardCoverLATAM_Chile---Upright.jpg?v=1775074775&width=400">
-            <div class="product-image">
-                <img src="https://paninitienda.com/cdn/shop/files/HardCoverLATAM_Chile---Upright.jpg?v=1775074775&width=400" 
-                     alt="Álbum Pasta Dura - Copa Mundial FIFA 2026™">
-            </div>
+            <a href="producto-album.html" style="text-decoration: none;">
+                <div class="product-image">
+                    <img src="https://paninitienda.com/cdn/shop/files/HardCoverLATAM_Chile---Upright.jpg?v=1775074775&width=400" 
+                         alt="Álbum Pasta Dura - Copa Mundial FIFA 2026™">
+                </div>
+            </a>
             <div class="product-title">Álbum Pasta Dura</div>
             <div class="product-worldcup">COPA MUNDIAL DE LA FIFA 2026™</div>
             <div class="price-container">
@@ -765,12 +762,15 @@
             <button class="btn-comprar add-to-cart">Agregar al carrito</button>
         </div>
 
-        <!-- Producto 2: Display x 104 sobres -->
+        <!-- Producto 2: Display x 104 sobres - CON IMAGEN Box_Cromos.jpg QUE SÍ FUNCIONA -->
         <div class="product-card" data-id="2" data-name="Display x 104 sobres COPA MUNDIAL DE LA FIFA 2026™" data-price="312000" data-brand="PANINI COLOMBIA" data-image="https://paninitienda.com/cdn/shop/files/Box_Cromos.jpg?v=1775075221&width=400">
-            <div class="product-image">
-                <img src="https://paninitienda.com/cdn/shop/files/Box_Cromos.jpg?v=1775075221&width=400" 
-                     alt="Display x 104 sobres">
-            </div>
+            <a href="producto-display.html" style="text-decoration: none;">
+                <div class="product-image">
+                    <img src="https://paninitienda.com/cdn/shop/files/Box_Cromos.jpg?v=1775075221&width=400" 
+                         alt="Display x 104 sobres"
+                         onerror="this.src='https://placehold.co/400x400/0033A0/white?text=Display+x+104'">
+                </div>
+            </a>
             <div class="product-title">Display x 104 sobres</div>
             <div class="product-worldcup">COPA MUNDIAL DE LA FIFA 2026™</div>
             <div class="price-container">
@@ -952,7 +952,7 @@
             }
         });
 
-        // ========== CARRITO DE COMPRAS ==========
+        // CARRITO DE COMPRAS
         let cart = [];
 
         function saveCart() {
@@ -1044,7 +1044,6 @@
             });
             cartItems.html(html);
             $('#cart-total').text(formatCOP(totalPrice));
-            $('#free-shipping').html('🚚 ¡Tu envío es gratis!');
         }
         
         function openCart() {
@@ -1076,7 +1075,6 @@
             if (cart.length > 0) {
                 const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
                 alert('Redirigiendo a pagos...\nTotal: ' + formatCOP(total));
-                // window.location.href = 'recargas/';
             }
         });
         
@@ -1085,17 +1083,15 @@
         window.updateQuantity = updateQuantity;
         window.removeItem = removeItem;
 
-        // ========== BOTÓN WHATSAPP ==========
-        // NÚMERO CORPORATIVO (cambia el número por el real)
-        const whatsappNumber = "573000000000"; // Cambia este número por el de atención al cliente
+        // WhatsApp
+        const whatsappNumber = "573000000000";
         const welcomeMessage = "Hola%20quiero%20recibir%20asesor%C3%ADa%20sobre%20los%20productos%20de%20Panini%20Mundial%202026";
-        
         $('#whatsappBtn').click(function() {
             window.open(`https://wa.me/${whatsappNumber}?text=${welcomeMessage}`, '_blank');
         });
     });
 
-    // ========== CARRUSEL ==========
+    // Carrusel
     let slideIndex = 1;
     let slideInterval;
 
