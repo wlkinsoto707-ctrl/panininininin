@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="description" content="Álbum y figuritas del Mundial FIFA 2026™ - Panini Colombia">
     
-    <link rel="shortcut icon" type="image/x-icon" href="imagenes/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/panini/imagenes/favicon.ico">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -693,7 +693,7 @@
 
 <div class="blue-header">
     <div class="container">
-        <a href="index.html" class="logo">
+        <a href="/panini/index.html" class="logo">
             <img src="https://paninitienda.com/cdn/shop/files/panini-logo_2_2_1_png.webp" alt="Panini">
         </a>
         <div class="search-text">¿Buscas un manga, álbum o cómic?</div>
@@ -740,13 +740,13 @@
 
 <div class="container">
     <div class="breadcrumb">
-        <a href="index.html">Inicio</a> / <span>Panini Mundial 2026™ en Colombia: álbumes, sobres y colección oficial</span>
+        <a href="/panini/index.html">Inicio</a> / <span>Panini Mundial 2026™ en Colombia: álbumes, sobres y colección oficial</span>
     </div>
 
     <div class="products-grid">
-        <!-- Producto 1: Álbum Pasta Dura - IMAGEN ES LINK A DETALLE -->
+        <!-- Producto 1: Álbum Pasta Dura - CON RUTA CORREGIDA -->
         <div class="product-card" data-id="1" data-name="Álbum Pasta Dura COPA MUNDIAL DE LA FIFA 2026™" data-price="29940" data-brand="PANINI COLOMBIA" data-image="https://paninitienda.com/cdn/shop/files/HardCoverLATAM_Chile---Upright.jpg?v=1775074775&width=400">
-            <a href="producto-album.html" style="text-decoration: none;">
+            <a href="/panini/producto-album.html" style="text-decoration: none;">
                 <div class="product-image">
                     <img src="https://paninitienda.com/cdn/shop/files/HardCoverLATAM_Chile---Upright.jpg?v=1775074775&width=400" 
                          alt="Álbum Pasta Dura - Copa Mundial FIFA 2026™">
@@ -762,9 +762,9 @@
             <button class="btn-comprar add-to-cart">Agregar al carrito</button>
         </div>
 
-        <!-- Producto 2: Display x 104 sobres - CON IMAGEN Box_Cromos.jpg QUE SÍ FUNCIONA -->
+        <!-- Producto 2: Display x 104 sobres - CON RUTA CORREGIDA -->
         <div class="product-card" data-id="2" data-name="Display x 104 sobres COPA MUNDIAL DE LA FIFA 2026™" data-price="312000" data-brand="PANINI COLOMBIA" data-image="https://paninitienda.com/cdn/shop/files/Box_Cromos.jpg?v=1775075221&width=400">
-            <a href="producto-display.html" style="text-decoration: none;">
+            <a href="/panini/producto-display.html" style="text-decoration: none;">
                 <div class="product-image">
                     <img src="https://paninitienda.com/cdn/shop/files/Box_Cromos.jpg?v=1775075221&width=400" 
                          alt="Display x 104 sobres"
@@ -1073,8 +1073,7 @@
         
         $('#checkout-btn').click(function() {
             if (cart.length > 0) {
-                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                alert('Redirigiendo a pagos...\nTotal: ' + formatCOP(total));
+                window.location.href = '/panini/recarga.html';
             }
         });
         
